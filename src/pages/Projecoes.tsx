@@ -126,20 +126,6 @@ export default function Projecoes() {
             </div>
           </div>
 
-          <div className="p-4 bg-accent rounded-lg">
-            <div className="flex items-start gap-3">
-              <TrendingUp className="w-5 h-5 text-primary mt-0.5" />
-              <div>
-                <p className="font-medium">Fórmula de Juros Compostos</p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  M = C × [(1 + i)^n - 1] / i
-                </p>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Onde: M = Montante final, C = Contribuição mensal, i = taxa mensal, n = número de meses
-                </p>
-              </div>
-            </div>
-          </div>
         </CardContent>
       </Card>
 
