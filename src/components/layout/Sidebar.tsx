@@ -7,7 +7,8 @@ import {
   Calendar, 
   Settings,
   Target,
-  X
+  X,
+  Wallet
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,7 @@ interface SidebarProps {
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
+  { icon: Wallet, label: 'Carteira', path: '/carteira' },
   { icon: FileSearch, label: 'Diagnóstico', path: '/diagnostico' },
   { icon: Lightbulb, label: 'Estratégias', path: '/estrategias' },
   { icon: TrendingUp, label: 'Projeções', path: '/projecoes' },

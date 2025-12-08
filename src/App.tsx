@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { FinancialPlanProvider } from "@/contexts/FinancialPlanContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
+import Carteira from "./pages/Carteira";
 import Diagnostico from "./pages/Diagnostico";
 import Estrategias from "./pages/Estrategias";
 import Projecoes from "./pages/Projecoes";
@@ -23,6 +24,7 @@ const App = () => (
           <DashboardLayout>
             <Routes>
               <Route path="/" element={<Dashboard />} />
+              <Route path="/carteira" element={<Carteira />} />
               <Route path="/diagnostico" element={<Diagnostico />} />
               <Route path="/estrategias" element={<Estrategias />} />
               <Route path="/projecoes" element={<Projecoes />} />
