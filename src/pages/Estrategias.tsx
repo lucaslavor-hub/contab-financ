@@ -97,46 +97,6 @@ export default function Estrategias() {
               </Card>
             </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-sm flex items-center gap-2">
-                  <Calculator className="w-4 h-4" />
-                  Simulador de Orçamento (50/30/20)
-                </CardTitle>
-                <CardDescription>Ajuste a renda mensal para ver a distribuição</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="space-y-4">
-                  <div className="flex justify-between">
-                    <span className="text-sm text-muted-foreground">Renda do mês</span>
-                    <span className="font-semibold">{formatCurrency(rendaSimulada)}</span>
-                  </div>
-                  <Slider
-                    value={[rendaSimulada]}
-                    onValueChange={(value) => setRendaSimulada(value[0])}
-                    min={config.renda.rendaMinima}
-                    max={config.renda.rendaMaxima}
-                    step={100}
-                    className="py-2"
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-4 bg-chart-1/10 rounded-lg text-center">
-                    <p className="text-xs text-muted-foreground mb-1">Essencial ({config.despesas.percentualEssenciais}%)</p>
-                    <p className="text-xl font-bold text-chart-1">{formatCurrency(valorEssencial)}</p>
-                  </div>
-                  <div className="p-4 bg-chart-3/10 rounded-lg text-center">
-                    <p className="text-xs text-muted-foreground mb-1">Lazer ({config.despesas.percentualLazer}%)</p>
-                    <p className="text-xl font-bold text-chart-3">{formatCurrency(valorLazer)}</p>
-                  </div>
-                  <div className="p-4 bg-chart-2/10 rounded-lg text-center">
-                    <p className="text-xs text-muted-foreground mb-1">Investimentos ({config.despesas.percentualInvestimentos}%)</p>
-                    <p className="text-xl font-bold text-chart-2">{formatCurrency(valorInvestimentos)}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </AccordionContent>
         </AccordionItem>
 
