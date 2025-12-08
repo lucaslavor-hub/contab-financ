@@ -35,11 +35,9 @@ export default function Cronograma() {
       icone: Clock,
       cor: 'bg-destructive/10 text-destructive',
       tarefas: [
-        { id: 'sep-pf-pj', texto: 'Separar contas PF e PJ completamente', concluida: false },
-        { id: 'pro-labore', texto: `Estabelecer pró-labore fixo de R$ ${config.renda.rendaAlvoProLabore.toLocaleString('pt-BR')}`, concluida: false },
         { id: 'quitar-dividas', texto: 'Quitar dívidas de cartão (PF primeiro, depois PJ)', concluida: false },
-        { id: 'iniciar-reserva', texto: 'Iniciar formação da reserva de emergência', concluida: false },
-        { id: 'sistema-controle', texto: 'Implantar sistema de controle financeiro (planilha ou app)', concluida: false },
+        { id: 'iniciar-reserva', texto: 'Iniciar formação da reserva de emergência equivalente a 6 meses de despesas', concluida: false },
+        { id: 'sistema-controle', texto: 'Implantar sistema de controle financeiro', concluida: false },
         { id: 'reducao-limite', texto: 'Solicitar redução de limite do cartão PJ', concluida: false },
       ]
     },
