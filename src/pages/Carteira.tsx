@@ -43,11 +43,8 @@ interface Account {
 const initialAccounts: Account[] = [
   { id: 'pf', name: 'Conta PF', type: 'checking', balance: 800, icon: Wallet },
   { id: 'pj', name: 'Conta PJ', type: 'checking', balance: 2500, icon: Building2 },
-  { id: 'reserva', name: 'Reserva de Emergência', type: 'savings', balance: 6570, icon: PiggyBank },
-  { id: 'tesouro', name: 'Tesouro Selic', type: 'investment', balance: 4599, icon: Landmark },
-  { id: 'acoes', name: 'Ações', type: 'investment', balance: 1500, icon: BarChart3 },
-  { id: 'cartao-pf', name: 'Cartão PF', type: 'credit', balance: -500, icon: CreditCard },
-  { id: 'cartao-pj', name: 'Cartão PJ', type: 'credit', balance: -1000, icon: CreditCard },
+  { id: 'especulativos', name: 'Investimentos Especulativos', type: 'investment', balance: 1500, icon: BarChart3 },
+  { id: 'reserva', name: 'Reserva de Emergência', type: 'savings', balance: 0, icon: PiggyBank },
 ];
 
 const categories = [
