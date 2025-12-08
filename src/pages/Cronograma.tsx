@@ -47,11 +47,9 @@ export default function Cronograma() {
       icone: Calendar,
       cor: 'bg-warning/10 text-warning',
       tarefas: [
-        { id: 'completar-reserva', texto: `Completar reserva de emergência (R$ ${config.reservaEmergencia.metaTotal.toLocaleString('pt-BR')})`, concluida: false },
+        { id: 'completar-reserva', texto: 'Completar reserva de emergência (R$ 21.900)', concluida: false },
         { id: 'fundo-compensacao', texto: 'Criar fundo de compensação para meses fracos', concluida: false },
-        { id: 'regra-3-dias', texto: `Praticar regra dos ${config.comportamento.diasReflexaoCompras} dias para compras acima de R$ ${config.comportamento.valorRegraTresDias}`, concluida: false },
         { id: 'automatizar', texto: 'Automatizar transferências para investimentos', concluida: false },
-        { id: 'ritual-revisao', texto: `Estabelecer ritual de revisão mensal (${config.comportamento.minutosRevisaoMensal} min)`, concluida: false },
       ]
     },
     {
