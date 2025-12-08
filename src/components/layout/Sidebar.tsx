@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
-  FileSearch, 
   Lightbulb, 
   TrendingUp, 
   Calendar, 
@@ -21,7 +20,6 @@ interface SidebarProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
   { icon: Wallet, label: 'Carteira', path: '/carteira' },
-  { icon: FileSearch, label: 'Diagnóstico', path: '/diagnostico' },
   { icon: Lightbulb, label: 'Estratégias', path: '/estrategias' },
   { icon: TrendingUp, label: 'Projeções', path: '/projecoes' },
   { icon: Calendar, label: 'Cronograma', path: '/cronograma' },

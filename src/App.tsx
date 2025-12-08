@@ -6,7 +6,6 @@ import { FinancialPlanProvider } from "@/contexts/FinancialPlanContext";
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import Carteira from "./pages/Carteira";
-import Diagnostico from "./pages/Diagnostico";
 import Estrategias from "./pages/Estrategias";
 import Projecoes from "./pages/Projecoes";
 import Cronograma from "./pages/Cronograma";
@@ -25,7 +24,6 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/carteira" element={<Carteira />} />
-              <Route path="/diagnostico" element={<Diagnostico />} />
               <Route path="/estrategias" element={<Estrategias />} />
               <Route path="/projecoes" element={<Projecoes />} />
               <Route path="/cronograma" element={<Cronograma />} />
