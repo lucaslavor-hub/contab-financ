@@ -71,9 +71,6 @@ export default function Dashboard() {
                 <span className="text-xl font-bold text-success">{formatCurrency(saldoTeorico)}</span>
               </div>
             </div>
-            <p className="text-xs text-muted-foreground bg-muted p-3 rounded-lg">
-              {config.persona.nome} tem boa capacidade de geração de renda, mas enfrenta instabilidade típica do trabalho freelancer e falta de organização entre PF e PJ.
-            </p>
           </CardContent>
         </Card>
 
