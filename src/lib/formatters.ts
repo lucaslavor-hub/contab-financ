@@ -9,6 +9,14 @@ export function formatPercent(value: number): string {
   return `${value}%`;
 }
 
+export function formatDate(dateString: string): string {
+  return new Intl.DateTimeFormat('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  }).format(new Date(dateString));
+}
+
 export function formatNumber(value: number): string {
   return new Intl.NumberFormat('pt-BR').format(value);
 }
