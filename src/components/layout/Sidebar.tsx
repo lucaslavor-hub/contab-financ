@@ -2,12 +2,12 @@ import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
   Lightbulb, 
-  TrendingUp, 
-  Calendar, 
-  Settings,
+  Wallet,
+  ArrowRightLeft,
+  CreditCard,
   Target,
-  X,
-  Wallet
+  Settings,
+  X
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -19,10 +19,11 @@ interface SidebarProps {
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/' },
-  { icon: Wallet, label: 'Carteira', path: '/carteira' },
-  { icon: Lightbulb, label: 'Estratégias', path: '/estrategias' },
-  { icon: TrendingUp, label: 'Projeções', path: '/projecoes' },
-  { icon: Calendar, label: 'Cronograma', path: '/cronograma' },
+  { icon: Wallet, label: 'Carteiras', path: '/carteiras' },
+  { icon: ArrowRightLeft, label: 'Transações', path: '/transacoes' },
+  { icon: CreditCard, label: 'Dívidas', path: '/dividas' },
+  { icon: Target, label: 'Metas', path: '/metas' },
+  { icon: Lightbulb, label: 'Insights', path: '/insights' },
   { icon: Settings, label: 'Configurações', path: '/configuracoes' },
 ];
 
@@ -53,8 +54,8 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
               </div>
               {isOpen && (
                 <div className="animate-slide-in">
-                  <h1 className="font-bold text-sidebar-foreground text-sm">Plano Financeiro</h1>
-                  <p className="text-xs text-muted-foreground">Lucas Mendes</p>
+                  <h1 className="font-bold text-sidebar-foreground text-sm">Finanças</h1>
+                  <p className="text-xs text-muted-foreground">Gestão Pessoal</p>
                 </div>
               )}
             </div>
@@ -101,7 +102,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
           {isOpen && (
             <div className="p-4 border-t border-sidebar-border">
               <p className="text-xs text-muted-foreground text-center">
-                Plano de Independência Financeira
+                Sistema de Planejamento Financeiro
               </p>
             </div>
           )}
