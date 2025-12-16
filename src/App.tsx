@@ -9,6 +9,7 @@ import Carteiras from "./pages/Carteiras";
 import Transacoes from "./pages/Transacoes";
 import Dividas from "./pages/Dividas";
 import Metas from "./pages/Metas";
+import Cronograma from "./pages/Cronograma";
 import Insights from "./pages/Insights";
 import Configuracoes from "./pages/Configuracoes";
 import NotFound from "./pages/NotFound";
@@ -28,6 +29,7 @@ const App = () => (
               <Route path="/transacoes" element={<Transacoes />} />
               <Route path="/dividas" element={<Dividas />} />
               <Route path="/metas" element={<Metas />} />
+              <Route path="/cronograma" element={<Cronograma />} />
               <Route path="/insights" element={<Insights />} />
               <Route path="/configuracoes" element={<Configuracoes />} />
               <Route path="*" element={<NotFound />} />
