@@ -1,6 +1,6 @@
 import { Menu, Moon, Sun, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useFinancialPlan } from '@/contexts/FinancialPlanContext';
+import { useFinancialData } from '@/contexts/FinancialDataContext';
 import { useState, useEffect } from 'react';
 
 interface HeaderProps {
@@ -8,7 +8,7 @@ interface HeaderProps {
 }
 
 export function Header({ onMenuClick }: HeaderProps) {
-  const { config } = useFinancialPlan();
+  const { configuracao } = useFinancialData();
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -34,8 +34,8 @@ export function Header({ onMenuClick }: HeaderProps) {
           <Menu className="w-5 h-5" />
         </Button>
         <div>
-          <h2 className="font-semibold text-foreground">{config.persona.nome}</h2>
-          <p className="text-xs text-muted-foreground">Plano de Independência Financeira Personalizado</p>
+          <h2 className="font-semibold text-foreground">{configuracao.persona.nome}</h2>
+          <p className="text-xs text-muted-foreground">Sistema de Planejamento Financeiro</p>
         </div>
       </div>
 
