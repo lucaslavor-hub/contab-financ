@@ -12,8 +12,8 @@ import {
 const carteirasIniciais: Carteira[] = [
   { id: 'pessoal', nome: 'Conta Pessoal', tipo: 'pessoal', saldo: 800, cor: 'bg-blue-500', icone: 'Wallet' },
   { id: 'profissional', nome: 'Conta Profissional', tipo: 'profissional', saldo: 2500, cor: 'bg-purple-500', icone: 'Building2' },
-  { id: 'reserva', nome: 'Reserva de Emergência', tipo: 'reserva', saldo: 6500, cor: 'bg-green-500', icone: 'PiggyBank' },
-  { id: 'investimentos', nome: 'Carteira de Investimentos', tipo: 'investimento', saldo: 15000, cor: 'bg-amber-500', icone: 'TrendingUp' },
+  { id: 'reserva', nome: 'Reserva de Emergência', tipo: 'reserva', saldo: 0, cor: 'bg-green-500', icone: 'PiggyBank' },
+  { id: 'investimentos', nome: 'Carteira de Investimentos', tipo: 'investimento', saldo: 1500, cor: 'bg-amber-500', icone: 'TrendingUp' },
 ];
 
 const transacoesIniciais: Transacao[] = [
@@ -99,7 +99,7 @@ const metasIniciais: Meta[] = [
     id: 'reserva-emergencia',
     nome: 'Reserva de Emergência',
     valorAlvo: 21900,
-    valorAcumulado: 6500,
+    valorAcumulado: 0,
     prioridade: 1,
     ehReservaEmergencia: true,
     carteiraDestinoId: 'reserva',
@@ -109,7 +109,7 @@ const metasIniciais: Meta[] = [
     id: 'intercambio',
     nome: 'Intercâmbio / Produto Digital',
     valorAlvo: 41000,
-    valorAcumulado: 5000,
+    valorAcumulado: 0,
     prioridade: 2,
     ehReservaEmergencia: false,
     carteiraDestinoId: 'investimentos',
@@ -119,7 +119,7 @@ const metasIniciais: Meta[] = [
     id: 'independencia',
     nome: 'Independência Financeira',
     valorAlvo: 1200000,
-    valorAcumulado: 10000,
+    valorAcumulado: 1500,
     prioridade: 3,
     ehReservaEmergencia: false,
     carteiraDestinoId: 'investimentos',
