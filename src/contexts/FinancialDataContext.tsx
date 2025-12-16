@@ -119,7 +119,7 @@ const metasIniciais: Meta[] = [
     id: 'independencia',
     nome: 'Independência Financeira',
     valorAlvo: 1200000,
-    valorAcumulado: 15000,
+    valorAcumulado: 10000,
     prioridade: 3,
     ehReservaEmergencia: false,
     carteiraDestinoId: 'investimentos',
