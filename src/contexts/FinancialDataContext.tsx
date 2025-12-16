@@ -232,85 +232,110 @@ export function FinancialDataProvider({ children }: { children: ReactNode }) {
   }, [adicionarTransacao]);
 
   const aportarMeta = useCallback((valor: number, carteiraOrigemId: string, metaId: string) => {
-    const meta = metas.find(m => m.id === metaId);
-    if (!meta) return;
+    setMetas(prevMetas => {
+      const meta = prevMetas.find(m => m.id === metaId);
+      if (!meta) return prevMetas;
 
-    adicionarTransacao(
-      `Aporte: ${meta.nome}`, 
-      valor, 
-      'transferencia', 
-      meta.ehReservaEmergencia ? 'Reserva' : 'Investimento', 
-      'aportar_meta', 
-      carteiraOrigemId, 
-      meta.carteiraDestinoId,
-      metaId
-    );
+      // Adicionar transação
+      const novaTransacao: Transacao = {
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        data: new Date().toISOString(),
+        descricao: `Aporte: ${meta.nome}`,
+        valor,
+        tipo: 'transferencia',
+        categoria: meta.ehReservaEmergencia ? 'Reserva' : 'Investimento',
+        acaoOrigem: 'aportar_meta',
+        carteiraOrigemId,
+        carteiraDestinoId: meta.carteiraDestinoId,
+        metaId
+      };
+      setTransacoes(prev => [novaTransacao, ...prev]);
 
-    setCarteiras(prev => prev.map(c => {
-      if (c.id === carteiraOrigemId) return { ...c, saldo: c.saldo - valor };
-      if (c.id === meta.carteiraDestinoId) return { ...c, saldo: c.saldo + valor };
-      return c;
-    }));
+      // Atualizar carteiras
+      setCarteiras(prevCarteiras => prevCarteiras.map(c => {
+        if (c.id === carteiraOrigemId) return { ...c, saldo: c.saldo - valor };
+        if (c.id === meta.carteiraDestinoId) return { ...c, saldo: c.saldo + valor };
+        return c;
+      }));
 
-    setMetas(prev => prev.map(m => 
-      m.id === metaId ? { ...m, valorAcumulado: m.valorAcumulado + valor } : m
-    ));
-  }, [metas, adicionarTransacao]);
+      // Retornar metas atualizadas
+      return prevMetas.map(m => 
+        m.id === metaId ? { ...m, valorAcumulado: m.valorAcumulado + valor } : m
+      );
+    });
+  }, []);
 
   const pagarDivida = useCallback((valor: number, carteiraOrigemId: string, dividaId: string) => {
-    const divida = dividas.find(d => d.id === dividaId);
-    if (!divida) return;
+    setDividas(prevDividas => {
+      const divida = prevDividas.find(d => d.id === dividaId);
+      if (!divida) return prevDividas;
 
-    const valorPagamento = Math.min(valor, divida.saldoRestante);
-    
-    adicionarTransacao(
-      `Pagamento: ${divida.nome}`, 
-      valorPagamento, 
-      'saida', 
-      'Pagamento Dívida', 
-      'pagar_divida', 
-      carteiraOrigemId,
-      undefined,
-      undefined,
-      dividaId
-    );
+      const valorPagamento = Math.min(valor, divida.saldoRestante);
+      
+      // Adicionar transação
+      const novaTransacao: Transacao = {
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        data: new Date().toISOString(),
+        descricao: `Pagamento: ${divida.nome}`,
+        valor: valorPagamento,
+        tipo: 'saida',
+        categoria: 'Pagamento Dívida',
+        acaoOrigem: 'pagar_divida',
+        carteiraOrigemId,
+        dividaId
+      };
+      setTransacoes(prev => [novaTransacao, ...prev]);
 
-    setCarteiras(prev => prev.map(c => 
-      c.id === carteiraOrigemId ? { ...c, saldo: c.saldo - valorPagamento } : c
-    ));
+      // Atualizar carteiras
+      setCarteiras(prev => prev.map(c => 
+        c.id === carteiraOrigemId ? { ...c, saldo: c.saldo - valorPagamento } : c
+      ));
 
-    setDividas(prev => prev.map(d => {
-      if (d.id === dividaId) {
-        const novoSaldo = d.saldoRestante - valorPagamento;
-        return { 
-          ...d, 
-          saldoRestante: novoSaldo,
-          status: novoSaldo <= 0 ? 'quitada' : 'ativa',
-          dataQuitacao: novoSaldo <= 0 ? new Date().toISOString() : undefined
-        };
-      }
-      return d;
-    }));
-  }, [dividas, adicionarTransacao]);
+      // Retornar dívidas atualizadas
+      return prevDividas.map(d => {
+        if (d.id === dividaId) {
+          const novoSaldo = d.saldoRestante - valorPagamento;
+          return { 
+            ...d, 
+            saldoRestante: novoSaldo,
+            status: novoSaldo <= 0 ? 'quitada' as const : 'ativa' as const,
+            dataQuitacao: novoSaldo <= 0 ? new Date().toISOString() : undefined
+          };
+        }
+        return d;
+      });
+    });
+  }, []);
 
   const usarReservaEmergencia = useCallback((valor: number, descricao: string) => {
-    const carteiraReserva = carteiras.find(c => c.tipo === 'reserva');
-    if (!carteiraReserva) return;
+    setCarteiras(prevCarteiras => {
+      const carteiraReserva = prevCarteiras.find(c => c.tipo === 'reserva');
+      if (!carteiraReserva) return prevCarteiras;
 
-    adicionarTransacao(descricao, valor, 'saida', 'Emergência', 'usar_reserva', carteiraReserva.id);
+      // Adicionar transação
+      const novaTransacao: Transacao = {
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        data: new Date().toISOString(),
+        descricao,
+        valor,
+        tipo: 'saida',
+        categoria: 'Emergência',
+        acaoOrigem: 'usar_reserva',
+        carteiraOrigemId: carteiraReserva.id
+      };
+      setTransacoes(prev => [novaTransacao, ...prev]);
 
-    setCarteiras(prev => prev.map(c => 
-      c.id === carteiraReserva.id ? { ...c, saldo: c.saldo - valor } : c
-    ));
-
-    // Atualizar meta de reserva
-    const metaReserva = metas.find(m => m.ehReservaEmergencia);
-    if (metaReserva) {
+      // Atualizar meta de reserva
       setMetas(prev => prev.map(m => 
         m.ehReservaEmergencia ? { ...m, valorAcumulado: Math.max(0, m.valorAcumulado - valor) } : m
       ));
-    }
-  }, [carteiras, metas, adicionarTransacao]);
+
+      // Retornar carteiras atualizadas
+      return prevCarteiras.map(c => 
+        c.id === carteiraReserva.id ? { ...c, saldo: c.saldo - valor } : c
+      );
+    });
+  }, []);
 
   const adicionarCarteira = useCallback((carteira: Omit<Carteira, 'id'>) => {
     setCarteiras(prev => [...prev, { ...carteira, id: gerarId() }]);
