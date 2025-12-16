@@ -6,6 +6,7 @@ import {
   ArrowRightLeft,
   CreditCard,
   Target,
+  Calendar,
   Settings,
   X
 } from 'lucide-react';
@@ -23,6 +24,7 @@ const menuItems = [
   { icon: ArrowRightLeft, label: 'Transações', path: '/transacoes' },
   { icon: CreditCard, label: 'Dívidas', path: '/dividas' },
   { icon: Target, label: 'Metas', path: '/metas' },
+  { icon: Calendar, label: 'Cronograma', path: '/cronograma' },
   { icon: Lightbulb, label: 'Insights', path: '/insights' },
   { icon: Settings, label: 'Configurações', path: '/configuracoes' },
 ];
